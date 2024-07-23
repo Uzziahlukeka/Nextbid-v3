@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (isset($_POST['pay'])) {
     if (isset($_POST['bidd'])) {
         // Retrieve the bid value from the form

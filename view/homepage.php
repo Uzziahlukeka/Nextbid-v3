@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="/styles/login.css">
     <link rel="icon" href="/icons/Main Logo.svg">
@@ -32,8 +31,8 @@
                 <input type="checkbox" name="remember" id="remember">
 
                 <button type="submit" class="btn" name="sign">Sign In</button>
-                <?php if (isset($errorMessage)): ?>
-                <p><?php echo $errorMessage; ?></p>
+                <?php if (isset($errorMessage)) : ?>
+                    <p><?php echo $errorMessage; ?></p>
                 <?php endif; ?>
 
                 <div class="login-method">
@@ -41,13 +40,13 @@
                         <div class="login-method-divider-line"></div>
                         <div class="login-method-divider-text">or Sign In with</div>
                         <div class="login-method-divider-line"></div>
-                      </div>
+                    </div>
                     <button class="login-method-btn" type="button"><img src="icons/logos_google-icon.svg" alt="">Google</button>
                     <button class="login-method-btn" type="button"><img src="icons/logos_facebook.svg" alt="">Facebook</button>
                 </div>
-                
+
             </form>
-            
+
             <br>
             <div class="switch-button">
                 <p>If you don't have an account &nbsp;</p>
@@ -87,13 +86,15 @@
                 <input type="text" name="name" class="form-control" id="email" placeholder="jhon ling">
                 <button type="submit" class="btn" name="submit">Submit</button>
                 <!-- <a href="#" type="submit" class="btn">Create account</a> -->
-                <button id="back-to-login-btn" type="button" class="btn-1" >Back to Login</button>
+                <button id="back-to-login-btn" type="button" class="btn-1">Back to Login</button>
             </form>
         </div>
         <div class="guest">
-            <a href="/guest"><p>Continue as a Guest</p></a>
+            <a href="/guest">
+                <p>Continue as a Guest</p>
+            </a>
         </div>
- </header>
+    </header>
     <script src="/js/login.js"></script>
 </body>
 

@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 $name = $_GET['name'];
-$apiUrl = "http://localhost:8000/user/read?name=".urlencode($name);
+$apiUrl = "http://localhost:8000/user/read?name=" . urlencode($name);
 
 $ch = curl_init();
 

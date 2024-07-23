@@ -17,16 +17,16 @@ curl_close($ch);
 $datas = json_decode($response, true);
 
 if ($status_code === 422) {
-    
+
     echo "Invalid data: ";
     print_r($datas["errors"]);
     exit;
 }
 
 if ($status_code !== 200) {
-    
+
     echo "Unexpected status code: $status_code";
-    var_dump($datas);    
+    var_dump($datas);
     exit;
 }
-header("Location: ../../update?name=".urlencode($data['name']));
+header("Location: ../../update?name=" . urlencode($data['name']));

@@ -20,4 +20,4 @@ $method = $_SERVER['REQUEST_METHOD'];
 $router->route($url, $method);
 
 var_dump($routes);
-exit ;
+exit;

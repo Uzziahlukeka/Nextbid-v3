@@ -9,7 +9,7 @@ if ($item_name === null) {
     die(json_encode(['message' => 'Item name not provided']));
 }
 
-$apiUrl = "http://localhost:8000/read/item?item_name=".urlencode($item_name);
+$apiUrl = "http://localhost:8000/read/item?item_name=" . urlencode($item_name);
 
 
 $ch = curl_init();
@@ -33,16 +33,15 @@ if ($status_code !== 200) {
     var_dump($data);
     exit;
 }
- if (isset($_POST['bid'])) {
-     $bid = $_POST['bid'];
-     $_SESSION['bid'] = $bid;
- }
- $_SESSION['item_name']=$data['item_name'];
+if (isset($_POST['bid'])) {
+    $bid = $_POST['bid'];
+    $_SESSION['bid'] = $bid;
+}
+$_SESSION['item_name'] = $data['item_name'];
 
- if (!isset($_SESSION['data'])) {
+if (!isset($_SESSION['data'])) {
     header("Location: /");
     exit;
-    
 }
 // Check if the current user is the creator of the item
 if ($_SESSION['id'] !== $data['user_id']) {
@@ -50,8 +49,7 @@ if ($_SESSION['id'] !== $data['user_id']) {
     header("Location:show iten?item_name=" . urlencode($item_name));
 
     exit;
-}else{
+} else {
     header("Location:show item?item_name=" . urlencode($item_name));
     exit;
 }
-

@@ -5,7 +5,7 @@ $data = [
     'passw' => filter_input(INPUT_POST, "password")
 ];
 
-$apiUrl = "http://localhost:8000/user/create"; 
+$apiUrl = "http://localhost:8000/user/create";
 
 $ch = curl_init();
 
@@ -51,7 +51,7 @@ if ($status_code === 404) {
 
 
 
-$_SESSION['data']=$data['name'];
-$_SESSION['id']=$datas['id'];
+$_SESSION['data'] = $data['name'];
+$_SESSION['id'] = $datas['id'];
 
 header("Location: ../../");

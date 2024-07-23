@@ -14,15 +14,11 @@ $name = $_SESSION['data'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="/icons/Main Logo.svg">
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="styles/loader.css">
   <link rel="stylesheet" href="styles/new-menu.css">
@@ -35,7 +31,7 @@ $name = $_SESSION['data'];
 
   <!-- ....................................Here starts navbar........................................ -->
 
-  <section id="header"> 
+  <section id="header">
     <a href="/main"><img class="image" src="/icons/Nextbid.svg" alt=""></a>
     <div class="navbar-links">
       <ul class="navbar">
@@ -52,8 +48,8 @@ $name = $_SESSION['data'];
       <a href="cart.php"><img src="/icons/shopping.svg" alt=""></a>
       <a href="log out"> Log out </a>
     </div>
-    <div class="navbar-icons">            
-        <a href="/show?name=<?php echo $name ; ?>"><img class="user-profile-icon" src="/icons/user-circle.svg" alt=""></a>
+    <div class="navbar-icons">
+      <a href="/show?name=<?php echo $name; ?>"><img class="user-profile-icon" src="/icons/user-circle.svg" alt=""></a>
     </div>
     <div class="toggle-btn">
       <i class="fa-solid fa-bars fa-lg"></i>
@@ -64,7 +60,7 @@ $name = $_SESSION['data'];
       <li><a href="contact">Contact</a></li>
       <li><a href="new item">Add Product</a></li>
     </div>
-  </section> 
+  </section>
 
   <!-- ....................................Here starts hero section........................................ -->
 
@@ -185,46 +181,46 @@ $name = $_SESSION['data'];
   <!-- ....................................Here starts products section........................................ -->
   <div class="search__results"></div>
 
-  <?php 
-if (empty($data['data'])) {
+  <?php
+  if (empty($data['data'])) {
     echo "<div class='centered-message'>Nothing has been posted yet</div>";
-} else {
-    ?>
+  } else {
+  ?>
     <section class="card-content">
-        <div class="wrapper cards">
-            <?php foreach($data['data'] as $row) {
-              
-              ?>
-                <div class="card auction-card">
-                    <div class="auction-card-img">
-                        <a href="/choice?item_name=<?php echo $row['item_name']?>"><img src="/images/<?php echo $row['item_photo']?>" alt="Product Image" width="300" height="300" style="background-color: #d4f8f4; "></a>
-                    </div>
-                    <div class="card-details">
-                        <div class="like-icon-num">
-                            <a class="like-button">
-                                <i class="fa-regular fa-heart fa-lg like1-icon" style="color: #000000;"></i>
-                                <i class="fa-solid fa-heart fa-lg" style="color: #f92a2a;"></i>
-                            </a>
-                            <span class="like-count">0</span>
-                        </div>
-                        <h3 class="card-title"><?php echo $row['item_name'] ?></h3>
-                        <div class="current-price-p">
-                            <div class="stroke"></div>
-                            <p class="card-text card-text-2">Your bid: <span class="current-price current-bid">$0</span></p>
-                            <p class="card-text">Last bid: <span class="current-price last-bid">$<?php echo $row['item_price'] ?></span></p>
-                        </div>
-                        <p class="card-text-last card-text-1">Ends in: <span class="closing-time">2023-04-11T08:00:00Z</span></p>
-                        <div class="card-bid">
-                            <input type="number" class="bid-input" placeholder="Offer a price">
-                            <button onclick="bid(this.closest('.auction-card'))">Bid now</button>
-                        </div>
-                        <p class="card-text-last card-text">Ends in:<span id="timer" class="countdown-timer"></span></p>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
+      <div class="wrapper cards">
+        <?php foreach ($data['data'] as $row) {
+
+        ?>
+          <div class="card auction-card">
+            <div class="auction-card-img">
+              <a href="/choice?item_name=<?php echo $row['item_name'] ?>"><img src="/images/<?php echo $row['item_photo'] ?>" alt="Product Image" width="300" height="300" style="background-color: #d4f8f4; "></a>
+            </div>
+            <div class="card-details">
+              <div class="like-icon-num">
+                <a class="like-button">
+                  <i class="fa-regular fa-heart fa-lg like1-icon" style="color: #000000;"></i>
+                  <i class="fa-solid fa-heart fa-lg" style="color: #f92a2a;"></i>
+                </a>
+                <span class="like-count">0</span>
+              </div>
+              <h3 class="card-title"><?php echo $row['item_name'] ?></h3>
+              <div class="current-price-p">
+                <div class="stroke"></div>
+                <p class="card-text card-text-2">Your bid: <span class="current-price current-bid">$0</span></p>
+                <p class="card-text">Last bid: <span class="current-price last-bid">$<?php echo $row['item_price'] ?></span></p>
+              </div>
+              <p class="card-text-last card-text-1">Ends in: <span class="closing-time">2023-04-11T08:00:00Z</span></p>
+              <div class="card-bid">
+                <input type="number" class="bid-input" placeholder="Offer a price">
+                <button onclick="bid(this.closest('.auction-card'))">Bid now</button>
+              </div>
+              <p class="card-text-last card-text">Ends in:<span id="timer" class="countdown-timer"></span></p>
+            </div>
+          </div>
+        <?php } ?>
+      </div>
     </section>
-<?php } ?>
+  <?php } ?>
 
 
   <!-- ....................................Here starts intro section........................................ -->

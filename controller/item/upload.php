@@ -46,7 +46,7 @@ $data = [
     'item_photo' => $filename,
     'item_description' => filter_input(INPUT_POST, "item-description"),
     'item_price' => filter_input(INPUT_POST, "amount", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
-    'user_id'=>$id
+    'user_id' => $id
 ];
 
 $apiUrl = "http://localhost:8000/add/item";
@@ -89,4 +89,3 @@ if ($status_code !== 200) {
 
 header("Location: ../../upload?item_name=" . urlencode($data['item_name']));
 exit();
-

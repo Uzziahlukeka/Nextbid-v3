@@ -7,15 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/icons/Main Logo.svg">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/styles/inner-card.css">
     <title>Nextbid - Auction Website</title>
 </head>
@@ -27,7 +23,7 @@
         <div class="wrapper cards">
             <!-- ............................................................................ -->
             <div class="back-button">
-                <a href="main"><i class="fa-solid fa-arrow-left fa-lg" style="color: #3b3b3b;"></i>  Back</a>
+                <a href="main"><i class="fa-solid fa-arrow-left fa-lg" style="color: #3b3b3b;"></i> Back</a>
             </div>
             <div class="card auction-card">
                 <div class="auction-card-img">
@@ -46,14 +42,14 @@
                     <div>
                         <label class="one-label" for="title">Title</label>
                         <h3 class="card-title">
-                            Machinex 
+                            Machinex
                         </h3>
                     </div>
 
                     <!-- Description -->
                     <div class="description">
                         <label class="one-label" for="description">Description</label>
-                        <p>A random robot is a hypothetical robotic system or algorithm that performs actions or generates 
+                        <p>A random robot is a hypothetical robotic system or algorithm that performs actions or generates
                             outputs in a completely unpredictable or random manner. Instead of following a predefined set of rules or logic,
                             a random robot makes decisions or produces results based on random choices or probabilities.
                         </p>
@@ -63,8 +59,7 @@
                         <p class="card-text card-text-2">Your bid: <span class="current-price current-bid">$0</span></p>
                         <p class="card-text">Last bid: <span class="current-price last-bid">$90.00</span></p>
                     </div>
-                    <p class="card-text-last card-text-1">Ends in: <span
-                            class="closing-time">2023-04-11T08:00:00Z</span></p>
+                    <p class="card-text-last card-text-1">Ends in: <span class="closing-time">2023-04-11T08:00:00Z</span></p>
                     <div class="card-bid">
                         <input type="number" class="bid-input" placeholder="Offer a price">
                         <button onclick="bid(this.closest('.auction-card'))">Bid now</button>
@@ -79,4 +74,5 @@
     <script src="/js/like-counter.js"></script>
 
 </body>
+
 </html>

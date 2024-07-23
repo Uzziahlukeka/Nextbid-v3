@@ -1,7 +1,7 @@
 <?php
 $name = isset($_GET['item_name']) ? urldecode($_GET['item_name']) : null;
 
-$apiUrl = "http://localhost:8000/read/item?item_name=".urlencode($name);
+$apiUrl = "http://localhost:8000/read/item?item_name=" . urlencode($name);
 
 $ch = curl_init();
 
@@ -18,7 +18,6 @@ $status_code = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
 curl_close($ch);
 
 $datas = json_decode($response, true);
- 
 
 if ($status_code === 422) {
     echo "Invalid data: ";

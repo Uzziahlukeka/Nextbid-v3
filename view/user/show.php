@@ -4,6 +4,7 @@ require_once 'controller/user/show.php';
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>User Details</title>
@@ -58,45 +59,49 @@ require_once 'controller/user/show.php';
         }
 
         .edit-button {
-            background-color: #28a745; /* Green */
+            background-color: #28a745;
+            /* Green */
         }
 
         .auction-button {
-            background-color: #007bff; /* Blue */
+            background-color: #007bff;
+            /* Blue */
         }
 
         .delete-button {
-            background-color: #dc3545; /* Red */
+            background-color: #dc3545;
+            /* Red */
         }
 
-        button:hover { 
+        button:hover {
             opacity: 0.8;
         }
-
     </style>
 </head>
+
 <body>
-<main>
-    <h1>User Details</h1>
-    <dl>
-        <dt>ID</dt>
-        <dd><?php echo $datas['id']; ?></dd>
-        <dt>Name</dt>
-        <dd><?php echo $datas['name']; ?></dd>
-        <dt>Email</dt>
-        <dd><?php echo htmlspecialchars($datas['email']); ?></dd>
-        <dt>Created </dt>
-        <dd><?php echo $datas['create_at'] ?></dd>
-    </dl>
-    <div class="button-container">
-        <a href="edit?name=<?php echo $datas['name']; ?>" class="card-text"><button class="edit-button">Edit</button></a>
-        <a href="/main" class="card-text"><button class="auction-button">Auction &gt;</button></a>
-        <form method="post" action="/controller/user/delete.php">
-            <input type="hidden" name="id" value="<?php echo $datas['id']; ?>">
-            <input type="hidden" name="_method" value="delete">
-            <button class="delete-button">Delete</button>
-        </form>
-    </div>
-</main>
+    <main>
+        <h1>User Details</h1>
+        <dl>
+            <dt>ID</dt>
+            <dd><?php echo $datas['id']; ?></dd>
+            <dt>Name</dt>
+            <dd><?php echo $datas['name']; ?></dd>
+            <dt>Email</dt>
+            <dd><?php echo htmlspecialchars($datas['email']); ?></dd>
+            <dt>Created </dt>
+            <dd><?php echo $datas['create_at'] ?></dd>
+        </dl>
+        <div class="button-container">
+            <a href="edit?name=<?php echo $datas['name']; ?>" class="card-text"><button class="edit-button">Edit</button></a>
+            <a href="/main" class="card-text"><button class="auction-button">Auction &gt;</button></a>
+            <form method="post" action="/controller/user/delete.php">
+                <input type="hidden" name="id" value="<?php echo $datas['id']; ?>">
+                <input type="hidden" name="_method" value="delete">
+                <button class="delete-button">Delete</button>
+            </form>
+        </div>
+    </main>
 </body>
+
 </html>

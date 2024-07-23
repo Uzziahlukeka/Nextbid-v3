@@ -5,7 +5,7 @@ if (isset($_SESSION['bid'])) {
 
 $item_name = $_GET['item_name'];
 
-$apiUrl = "http://localhost:8000/read/item?item_name=".urlencode($item_name);
+$apiUrl = "http://localhost:8000/read/item?item_name=" . urlencode($item_name);
 
 
 $ch = curl_init();
@@ -29,8 +29,8 @@ if ($status_code !== 200) {
     var_dump($data);
     exit;
 }
- if (isset($_POST['bid'])) {
-     $bid = $_POST['bid'];
-     $_SESSION['bid'] = $bid;
- }
- $_SESSION['item_name']=$data['item_name']; 
+if (isset($_POST['bid'])) {
+    $bid = $_POST['bid'];
+    $_SESSION['bid'] = $bid;
+}
+$_SESSION['item_name'] = $data['item_name'];

@@ -30,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the request was successful
     if ($status_code === 204) {
         echo "Unexpected status code: $status_code";
-        var_dump($data);    
-    exit;
-    } 
+        var_dump($data);
+        exit;
+    }
 
     header("Location: ../../delete");
 }
