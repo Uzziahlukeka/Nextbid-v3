@@ -1,7 +1,8 @@
 <?php
 $router->get('/', 'view/homepage.php')->only('guest');
-$router->get('/index.php', 'view/homepage.php')->only('guest');;
-$router->get('/homepage', 'view/homepage.php')->only('guest');;
+$router->get('/index.php', 'view/homepage.php')->only('guest');
+$router->get('/homepage', 'view/homepage.php')->only('guest');
+$router->get('/google', 'config/google.php');
 
 $router->get('/main', 'view/logeddin.php');//->only('auth');
 $router->get('/guest', 'view/guest.html')->only('guest');
