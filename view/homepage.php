@@ -1,3 +1,7 @@
+<?php
+require 'config/config.php';
+$redirectUri = urlencode('http://localhost:3000/main');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +45,11 @@
                         <div class="login-method-divider-text">or Sign In with</div>
                         <div class="login-method-divider-line"></div>
                     </div>
-                    <button class="login-method-btn" type="button"><img src="icons/logos_google-icon.svg" alt="">Google</button>
+                    <a href="https://accounts.google.com/o/oauth2/v2/auth?scope=email&access_type=online&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=<?= $redirectUri ?>&client_id=<?= GOOGLE_ID ?>">
+                        <button class="login-method-btn" type="button">
+                            <img src="icons/logos_google-icon.svg" alt="">Google
+                        </button>
+                    </a>
                     <button class="login-method-btn" type="button"><img src="icons/logos_facebook.svg" alt="">Facebook</button>
                 </div>
 
