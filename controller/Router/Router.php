@@ -56,14 +56,26 @@ class Router
     }
     public function route($url, $method)
     {
+
+        $parsedUrl = parse_url($url);
+        $path = $parsedUrl['path'] ?? '';
+
         foreach ($this->routes as $route) {
-            if ($route['url'] == $url && $route['method'] == strtoupper($method)) {
+            if ($route['url'] == $path && $route['method'] == strtoupper($method)) {
 
-                //middleware 
-                Middleware::resolve($route['middleware']);
+                // Middleware
+                if (!is_null($route['middleware'])) {
+                    Middleware::resolve($route['middleware']);
+                }
 
-                require $route['controller'];
+                if (is_callable($route['controller'])) {
+                    call_user_func($route['controller']);
+                } elseif (is_string($route['controller'])) {
+                    require $route['controller'];
+                } else {
 
+                    $this->abort(500);
+                }
                 exit();
             }
         }
@@ -72,9 +84,6 @@ class Router
     protected function abort($code = 404)
     {
         http_response_code($code);
-
-        // Path based on provided $code
-
         header('location: 404');
         exit;
     }

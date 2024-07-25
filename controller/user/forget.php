@@ -23,7 +23,7 @@ if (filter_has_var(INPUT_POST, "submit")) {
     $to = $datas['email'];
     $subject = "Password Reset";
     $message = "your password has been sent :" . $datas['password'];
-    $hearders = "from : uzziah luk ";
+    $hearders = "from : not-reply";
     // Send the email
     $uzhh = mail($to, $subject, $message, $hearders);
     // Display a success message to the user

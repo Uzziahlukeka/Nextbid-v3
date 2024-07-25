@@ -2,7 +2,8 @@
     "name": "acer/nextbid-v2",
     "autoload": {
         "psr-4": {
-            "middle\\": "controller/Middleware"
+            "middle\\": "controller/Middleware",
+            "controller\\": "controller/"
         }
     },
     "authors": [

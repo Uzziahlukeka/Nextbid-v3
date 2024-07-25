@@ -46,7 +46,7 @@ $name = $_SESSION['data'];
         <input type="text" class="search__input" placeholder="Search here">
       </div>
       <a href="cart.php"><img src="/icons/shopping.svg" alt=""></a>
-      <a href="log out"> Log out </a>
+      <a href="logout"> Log out </a>
     </div>
     <div class="navbar-icons">
       <a href="/show?name=<?php echo $name; ?>"><img class="user-profile-icon" src="/icons/user-circle.svg" alt=""></a>
@@ -230,8 +230,6 @@ $name = $_SESSION['data'];
       <h4>Every purchase powers the Nextbid mission</h4>
     </div>
   </section>
-
-
   <!-- ....................................Here starts footer........................................ -->
 
 

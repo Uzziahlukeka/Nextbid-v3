@@ -1,5 +1,10 @@
 <?php
-require_once 'controller/user/show.php';
+require 'vendor/autoload.php';
+
+use controller\UserController;
+
+$data = new UserController();
+$datas = $data->readUser();
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +100,7 @@ require_once 'controller/user/show.php';
         <div class="button-container">
             <a href="edit?name=<?php echo $datas['name']; ?>" class="card-text"><button class="edit-button">Edit</button></a>
             <a href="/main" class="card-text"><button class="auction-button">Auction &gt;</button></a>
-            <form method="post" action="/controller/user/delete.php">
+            <form method="post" action="/delete">
                 <input type="hidden" name="id" value="<?php echo $datas['id']; ?>">
                 <input type="hidden" name="_method" value="delete">
                 <button class="delete-button">Delete</button>

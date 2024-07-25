@@ -1,5 +1,10 @@
 <?php
-require_once 'controller/user/edit.php';
+require 'vendor/autoload.php';
+
+use controller\UserController;
+
+$datas = new UserController();
+$data = $datas->readUser();
 
 ?>
 
@@ -18,7 +23,7 @@ require_once 'controller/user/edit.php';
 
         <h1>User Details</h1>
 
-        <form method="post" action="../../controller/user/update.php">
+        <form method="post" action="/user/update">
 
             <input type="hidden" name="id" value="<?= $data["id"] ?>">
 

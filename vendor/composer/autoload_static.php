@@ -31,6 +31,10 @@ class ComposerStaticInit70c0cfd91c97a5fa78979a5a7adb9970
         array (
             'middle\\' => 7,
         ),
+        'c' => 
+        array (
+            'controller\\' => 11,
+        ),
         'W' => 
         array (
             'Whoops\\' => 7,
@@ -87,12 +91,16 @@ class ComposerStaticInit70c0cfd91c97a5fa78979a5a7adb9970
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'middle\\' => 
         array (
             0 => __DIR__ . '/../..' . '/controller/Middleware',
+        ),
+        'controller\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/controller',
         ),
         'Whoops\\' => 
         array (
