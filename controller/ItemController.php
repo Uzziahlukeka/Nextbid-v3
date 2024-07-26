@@ -235,8 +235,6 @@ class ItemController
             'error' => false,
             'data' => $response['data']
         ];
-        // Handle listing of items
-        // This could involve including a view file and passing $response['data'] to it.
     }
 
     private function sendApiRequest($endpoint, $method, $data = [])

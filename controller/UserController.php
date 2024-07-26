@@ -20,7 +20,6 @@ class UserController
         curl_setopt($ch, CURLOPT_STDERR, fopen('php://stderr', 'w'));
 
         $response = curl_exec($ch);
-
         if (curl_errno($ch)) {
             $error = curl_error($ch);
             echo "cURL Error: " . $error;
@@ -29,7 +28,6 @@ class UserController
 
         $status_code = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         curl_close($ch);
-
         return ['response' => json_decode($response, true), 'status_code' => $status_code];
     }
 
@@ -44,6 +42,16 @@ class UserController
         $result = $this->sendRequest($this->apiBaseUrl . "create", "POST", $data);
         $response = $result['response'];
         $status_code = $result['status_code'];
+
+        $message = $response['message'] ?? 'No message found';
+
+        if ($message !== 'No message found') {
+            echo "<script type='text/javascript'>
+                    alert('" . addslashes($message) . "');
+                    window.location.href = '/'; 
+                </script>";
+            exit;
+        }
 
         if ($status_code === 422) {
             echo "Invalid data: ";
@@ -72,7 +80,7 @@ class UserController
             $result = $this->sendRequest($this->apiBaseUrl . "delete", "DELETE", $data);
             $status_code = $result['status_code'];
 
-            if ($status_code !== 200) {
+            if ($status_code !== 204) {
                 echo "Unexpected status code: $status_code";
                 var_dump($data);
                 exit;
@@ -189,32 +197,3 @@ class UserController
         header("Location: ../../update?name=" . urlencode($data['name']));
     }
 }
-
-/*$controller = new UserController();
-
-// Determine which action to perform based on the request
-$action = $_GET['action'] ?? '';
-
-switch ($action) {
-    case 'create':
-        $controller->createUser();
-        break;
-    case 'delete':
-        $controller->deleteUser();
-        break;
-    case 'read':
-        $controller->readUser();
-        break;
-    case 'login':
-        $controller->loginUser();
-        break;
-    case 'logout':
-        $controller->logoutUser();
-        break;
-    case 'update':
-        $controller->updateUser();
-        break;
-    default:
-        echo "Invalid action.";
-        break;
-}*/
