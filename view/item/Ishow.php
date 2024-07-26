@@ -1,6 +1,11 @@
 <?php
-//session_start();
-require_once "controller/item/ishow.php";
+require 'vendor/autoload.php';
+
+use controller\ItemController;
+
+$datas = new ItemController();
+$response = $datas->handleItemDetails();
+$data = $response['data'];
 ?>
 
 <!DOCTYPE html>
@@ -74,21 +79,17 @@ require_once "controller/item/ishow.php";
                     </div>
 
                     <p class="card-text-last card-text">Ends in:<span id="timer" class="countdown-timer"></span></p>
-                    <form method="post" action="/controller/item/delete.php" ">
-                    <input type=" hidden" name="_method" value="DELETE">
+                    <form method="post" action="deleteItem">
                         <input type="hidden" name="item_name" value="<?= $data["item_name"] ?>">
                         <button class="delete-button">Delete</button>
                     </form>
 
-                    <!-- <a href="update item?item_name=<?= $data["item_name"] ?> " class="card-text"><button class="edit-button">Edit</button></a> -->
-
-                    <form method="get" action="update item" class="edit-button">
+                    <form method="get" action="updateitem" class="edit-button">
                         <!-- <input type="hidden" name="_method" value="PUT"> -->
                         <input type="hidden" name="item_name" value="<?php echo $data["item_name"]; ?>">
                         <input type="hidden" name="user_id" value="<?php echo $data["user_id"]; ?>">
                         <button class="edit-button">edit</button>
                     </form>
-                    <!--<a href="iupdate.php?item_name=<?= $data["item_name"] ?>">Edit</a>-->
 
                     <form method="get" action="/">
                         <button type="submit" class="auction-button">AUCTION</button>

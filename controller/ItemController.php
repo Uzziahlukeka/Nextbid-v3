@@ -1,4 +1,7 @@
 <?php
+
+namespace controller;
+
 class ItemController
 {
     private $apiBaseUrl = "http://localhost:8000";
@@ -7,44 +10,14 @@ class ItemController
     {
         session_start();
     }
-
-    public function handleRequest()
-    {
-        $action = isset($_GET['action']) ? $_GET['action'] : '';
-
-        switch ($action) {
-            case 'delete':
-                $this->deleteItem();
-                break;
-            case 'edit':
-                $this->editItem();
-                break;
-            case 'view':
-                $this->viewItem();
-                break;
-            case 'upload':
-                $this->uploadItem();
-                break;
-            case 'pay':
-                $this->handlePayment();
-                break;
-            case 'list':
-                $this->listItems();
-                break;
-            default:
-                echo "Invalid action.";
-                break;
-        }
-    }
-
-    private function deleteItem()
+    public function deleteItem()
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $item_name = $_POST["item_name"];
             $data = ["item_name" => $item_name];
 
             $response = $this->sendApiRequest("/delete/item", "DELETE", $data);
-            if ($response['status_code'] === 204) {
+            if ($response['status_code'] === 200) {
                 header('Location: ../../delete_item');
                 exit;
             } else {
@@ -55,15 +28,15 @@ class ItemController
         }
     }
 
-    private function editItem()
+    public function editItem()
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = [
                 'item_name' => filter_input(INPUT_POST, "item_name"),
                 'item_photo' => filter_input(INPUT_POST, "item_photo"),
                 'item_description' => filter_input(INPUT_POST, "item_description"),
-                'item_price' => filter_input(INPUT_POST, "item_price", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
-                'user_id' => $_SESSION['data']
+                'item_price' => filter_input(INPUT_POST, "item_price"),
+                'user_id' => $_SESSION['id']
             ];
 
             $response = $this->sendApiRequest("/edit/item", "POST", $data);
@@ -77,13 +50,13 @@ class ItemController
                 var_dump($response['data']);
                 exit;
             } else {
-                header("Location: ../../edit_item?item_name=" . urlencode($data['item_name']));
+                header("Location: edit_item?item_name=" . urlencode($data['item_name']));
                 exit;
             }
         }
     }
 
-    private function viewItem()
+    public function viewItem()
     {
         $item_name = $_GET['item_name'] ?? null;
 
@@ -103,6 +76,8 @@ class ItemController
             exit;
         }
 
+
+
         $_SESSION['item_name'] = $response['data']['item_name'];
         if (isset($_POST['bid'])) {
             $_SESSION['bid'] = $_POST['bid'];
@@ -114,14 +89,66 @@ class ItemController
         }
 
         if ($_SESSION['id'] !== $response['data']['user_id']) {
-            header("Location: show_item?item_name=" . urlencode($item_name));
+
+            header("Location: show_iten?item_name=" . urlencode($item_name));
         } else {
             header("Location: show_item?item_name=" . urlencode($item_name));
         }
         exit;
     }
 
-    private function uploadItem()
+    public function handleItemDetails()
+    {
+        // Unset the bid session variable if it exists
+        if (isset($_SESSION['bid'])) {
+            unset($_SESSION['bid']);
+        }
+
+        // Get item name from the query parameter
+        $name = $_GET['item_name'] ?? null;
+        if ($name === null) {
+            die(json_encode(['message' => 'Item name not provided']));
+        }
+
+        // Fetch item data from the API
+        $apiUrl = $this->apiBaseUrl . "/read/item?item_name=" . urlencode($name);
+        $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_URL => $apiUrl,
+            CURLOPT_VERBOSE => true,
+            CURLOPT_STDERR => fopen('php://stderr', 'w'),
+        ]);
+        $response = curl_exec($ch);
+        $status_code = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+        curl_close($ch);
+        $data = json_decode($response, true);
+
+        // Handle different status codes
+        if ($status_code === 422) {
+            echo "Invalid data: ";
+            print_r($data["errors"]);
+            exit;
+        }
+        if ($status_code !== 200) {
+            echo "Unexpected status code: $status_code";
+            var_dump($data);
+            exit;
+        }
+
+        // Handle bid submission
+        if (isset($_POST['bid'])) {
+            $bid = $_POST['bid'];
+            $_SESSION['bid'] = $bid;
+        }
+
+        // Set session variables
+        $_SESSION['item_name'] = $data['item_name'];
+
+        return ['status_code' => $status_code, 'data' => $data];
+    }
+
+    public function uploadItem()
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (empty($_FILES)) {
@@ -147,7 +174,7 @@ class ItemController
             }
 
             $filename = $_FILES["image"]["name"];
-            $destination = __DIR__ . "../../../images/" . $filename;
+            $destination = "images/" . $filename;
 
             if (!move_uploaded_file($_FILES["image"]["tmp_name"], $destination)) {
                 exit("Can't move uploaded file");
@@ -191,7 +218,7 @@ class ItemController
         }
     }
 
-    private function listItems()
+    public function listItems()
     {
         $response = $this->sendApiRequest("/read/items", "GET");
 
@@ -204,7 +231,10 @@ class ItemController
             var_dump($response['data']);
             exit;
         }
-
+        return [
+            'error' => false,
+            'data' => $response['data']
+        ];
         // Handle listing of items
         // This could involve including a view file and passing $response['data'] to it.
     }
@@ -213,7 +243,7 @@ class ItemController
     {
         $url = $this->apiBaseUrl . $endpoint;
         $ch = curl_init();
-        
+
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_URL => $url,
@@ -233,7 +263,3 @@ class ItemController
         ];
     }
 }
-
-// Instantiate the controller and handle the request
-$controller = new ItemController();
-$controller->handleRequest();

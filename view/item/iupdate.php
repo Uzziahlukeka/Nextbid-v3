@@ -1,5 +1,9 @@
 <?php
-require_once 'controller/item/update.php';
+require 'vendor/autoload.php';
+use controller\ItemController;
+$data = new ItemController();
+$response = $data->handleItemDetails();
+$datas = $response['data'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +30,7 @@ require_once 'controller/item/update.php';
         <div class="wrapper cards">
 
             <!-- ............................................................................ -->
-            <form method="post" action="../../controller/item/ioupdate.php">
+            <form method="post" action="edititem">
                 <div class="back-button">
                     <a href="/main"><i class="fa-solid fa-arrow-left fa-lg" style="color: #3b3b3b;"></i> Back</a>
                 </div>
@@ -47,8 +51,8 @@ require_once 'controller/item/update.php';
                         <!-- Title -->
                         <div>
                             <label class="one-label" for="title">Title</label>
-                            <h3 class="card-title"><?php echo $datas['item_name'] ?>
-                                <input type="hidden" name="item_name" value="<?php echo $datas['item_name'] ?>">
+                            <h3 class="card-title">
+                                <input type="text" name="item_name" value="<?php echo $datas['item_name'] ?>">
                             </h3>
                         </div>
 

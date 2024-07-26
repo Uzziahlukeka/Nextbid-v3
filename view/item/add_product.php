@@ -40,15 +40,15 @@
 
     <div class="product-form">
         <h3>Add Your Item</h3>
-        <form class="product-container" method="post" action="add item" enctype="multipart/form-data">
+        <form class="product-container" method="post" action="newitem" enctype="multipart/form-data">
             <label class="one-label" for="item-name">Title/Name*</label>
-            <input class="form-control-1" type="text" id="item-name" name="item-name" placeholder="Item name" required>
+            <input class="form-control-1" type="text" id="item-name" name="item_name" placeholder="Item name" required>
 
             <label class="one-label" for="item-description">Item Description(optional)</label>
-            <textarea class="form-control-1" id="item-description" name="item-description" placeholder="Use this section to add any extra information"></textarea>
+            <textarea class="form-control-1" id="item-description" name="item_description" placeholder="Use this section to add any extra information"></textarea>
 
             <label class="one-label" for="starting-price">Starting Price*</label>
-            <input class="form-control-1" type="text" name="amount" placeholder="Enter amount in USD" id="amount" required>
+            <input class="form-control-1" type="text" name="item_price" placeholder="Enter amount in USD" id="amount" required>
 
 
             <div class="form-group-1 image-upload-container">

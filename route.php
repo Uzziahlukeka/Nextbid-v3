@@ -2,10 +2,11 @@
 require 'vendor/autoload.php';
 
 use controller\UserController;
+use controller\ItemController;
 
 $router = new Router();
 
-// Public routes
+// Public routes-------------------------------------------------------------------------
 $router->get('/', 'view/homepage.php')->only('guest');
 $router->get('/main', 'view/logeddin.php')->only('auth');
 $router->get('/index.php', 'view/homepage.php')->only('guest');
@@ -14,17 +15,17 @@ $router->get('/google', 'config/google.php');
 $router->get('/guest', 'view/guest.html')->only('guest');
 $router->get('/redirect', 'view/message.html');
 $router->get('/404', 'view/404.php');
+$router->get('/about', 'view/about.html');
+$router->get('/contact', 'view/contact.html');
 
-// User-related routes
+// User-related routes-----------------------------------------------------------------------
 $router->get('/create', 'view/user/create.php')->only('guest');
 $router->get('/delete', 'view/user/delete.php')->only('auth');
 $router->get('/edit', 'view/user/edit.php');
 $router->get('/forget', 'view/user/forget.php');
 $router->get('/login', 'view/user/login.php');
 $router->get('/read', 'view/user/read.php');
-//$router->get('/show', 'view/user/show.php');
 $router->get('/update', 'view/user/update.php');
-
 $router->get('/show', function () {
     require 'view/user/show.php';
 });
@@ -54,31 +55,38 @@ $router->post('/user/update', function () {
     $controller->updateUser();
 });
 
+// Additional routes for items---------------------------------------------------------------------------
+$router->get('/newItem', 'view/item/add_product.php');
+$router->get('/upload', 'view/item/upload.php');
+$router->post('/newitem', function () {
+    (new ItemController())->uploadItem();
+});
+
+$router->get('/edit_item', 'view/item/ioupdate.php');
+$router->get('/updateitem', function () {
+    require 'view/item/iupdate.php';
+});
+$router->post('/edititem', function () {
+    (new ItemController())->editItem();
+});
+
+$router->get('/show_item', 'view/item/Ishow.php');
+$router->get('/show_iten', 'view/item/show.php');
+$router->get('/choice', function () {
+    (new ItemController())->handleItemDetails();
+});
+$router->get('/showitem', function () {
+    (new ItemController())->viewItem();
+});
+
+$router->get('/delete item', 'view/item/idelete.php');
+$router->post('/deleteItem', function () {
+    (new ItemController())->deleteItem();
+});
+
 $router->post('/pay', 'view/item/pay.php');
 $router->post('/add item', 'controller/item/upload.php');
-
-// Additional routes for items
-$router->get('/new item', 'view/item/add_product.php');
-$router->get('/edit item', 'view/item/ioupdate.php');
-$router->get('/show item', 'view/item/Ishow.php');
-$router->get('/choice', 'controller/item/show.php');
-$router->get('/show iten', 'view/item/show.php');
-$router->get('/update item', 'view/item/iupdate.php');
-$router->get('/upload', 'view/item/upload.php');
-$router->get('/delete item', 'view/item/idelete.php');
 $router->get('/pay', 'view/item/pay.php');
 $router->post('/pay', 'view/item/pay.php');
-
-// Updating items
-// $router->put('/update item', function () {
-//     $controller = new ItemController(); // Assuming you have ItemController for items
-//     $controller->updateItem(); // Add the appropriate method in ItemController
-// });
-
-// Route for logging out
-$router->get('/log out', function () {
-    $controller = new UserController();
-    $controller->logoutUser();
-});
 
 $router->route($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

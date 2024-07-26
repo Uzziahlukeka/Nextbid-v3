@@ -1,5 +1,10 @@
 <?php
-require_once 'controller/item/read.php';
+require 'vendor/autoload.php';
+use controller\ItemController;
+$datas = new ItemController();
+$response = $datas->listItems();
+$data=$response['data'];
+
 $name = isset($_SESSION['data']) ? $_SESSION['data'] : null;
 $name = $_SESSION['data'];
 
@@ -38,7 +43,7 @@ $name = $_SESSION['data'];
         <li><a class="active" href="/main">Home</a></li>
         <li><a href="about">About</a></li>
         <li><a href="contact">Contact</a></li>
-        <li><a href="/new item">Add Product</a></li>
+        <li><a href="/newItem">Add Product</a></li>
       </ul>
     </div>
     <div class="navbar-icons">
@@ -193,7 +198,7 @@ $name = $_SESSION['data'];
         ?>
           <div class="card auction-card">
             <div class="auction-card-img">
-              <a href="/choice?item_name=<?php echo $row['item_name'] ?>"><img src="/images/<?php echo $row['item_photo'] ?>" alt="Product Image" width="300" height="300" style="background-color: #d4f8f4; "></a>
+              <a href="/showitem?item_name=<?php echo $row['item_name'] ?>"><img src="/images/<?php echo $row['item_photo'] ?>" alt="Product Image" width="300" height="300" style="background-color: #d4f8f4; "></a>
             </div>
             <div class="card-details">
               <div class="like-icon-num">

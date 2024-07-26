@@ -3,6 +3,8 @@
 if (isset($_GET['item_name'])) {
     $data = urldecode($_GET['item_name']);
 }
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,7 +38,7 @@ if (isset($_GET['item_name'])) {
     <main>
         <h1>Item Updated</h1>
         <p>Repository updated successfully.</p>
-        <p>Go to your item <a href="/show item?item_name=<?php echo $data; ?>">here</a>.</p>
+        <p>Go to your item <a href="/show_item?item_name=<?php echo $data; ?>">here</a>.</p>
         <p>Click <a href="/main">here</a> to go back to the auction.</p>
     </main>
 </body>

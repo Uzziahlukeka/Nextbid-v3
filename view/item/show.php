@@ -1,6 +1,11 @@
 <?php
-//session_start();
-require_once "controller/item/ishow.php";
+require 'vendor/autoload.php';
+use controller\ItemController;
+$datas = new ItemController();
+$response = $datas->handleItemDetails();
+$data=$response['data'];
+
+//require_once "controller/item/ishow.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
