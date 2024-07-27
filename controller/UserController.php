@@ -196,4 +196,95 @@ class UserController
 
         header("Location: ../../update?name=" . urlencode($data['name']));
     }
+
+    public function createPassword()
+    {
+        $data = [
+            'password' => filter_input(INPUT_POST, "password"),
+            'id' => filter_input(INPUT_POST, 'id')
+        ];
+
+        $result = $this->sendRequest($this->apiBaseUrl . "newpassword", "POST", $data);
+        $response = $result['response'];
+        $status_code = $result['status_code'];
+
+        if ($status_code === 422) {
+            echo "Invalid data: ";
+            print_r($response["errors"]);
+            exit;
+        }
+
+        if ($status_code !== 200) {
+            echo "Unexpected status code: $status_code";
+            var_dump($response);
+            exit;
+        }
+        header('location: /');
+        exit();
+    }
+
+    public function findUserByToken()
+    {
+        $token = $_GET['token'];
+        $apiUrl = $this->apiBaseUrl . "findbytoken?token=" . urlencode($token);
+
+        $result = $this->sendRequest($apiUrl, "GET");
+        $response = $result['response'];
+        $status_code = $result['status_code'];
+
+
+
+        if ($status_code === 422) {
+            echo "Invalid data: ";
+            print_r($response["errors"]);
+            exit;
+        }
+
+        if ($status_code !== 200) {
+            echo "Unexpected status code: $status_code";
+            var_dump($response);
+            exit;
+        }
+
+        // Process the response data as needed
+        return $response;
+    }
+
+    public function forgetPassword()
+    {
+        if (filter_has_var(INPUT_GET, "submit")) {
+            $email = filter_input(INPUT_GET, "email");
+
+            $apiUrl = $this->apiBaseUrl . "forget?email=" . urlencode($email);
+
+
+            $result = $this->sendRequest($apiUrl, "GET");
+            $datas = $result['response'];
+            $status_code = $result['status_code'];
+
+
+
+            if ($status_code === 200) {
+                if (!empty($datas['email']) && !empty($datas['token'])) {
+                    require 'controller/user/message.php';
+                } else {
+                    echo 'Invalid data received from API.';
+                }
+            } elseif ($status_code === 422) {
+                echo "Invalid data: ";
+                print_r($datas["errors"]);
+                exit;
+            } else {
+                echo "Unexpected status code: $status_code";
+                var_dump($datas);
+                exit;
+            }
+
+            echo "<script>
+                     alert('email sent');
+                    window.location.href = '/';
+                </script>";
+            exit;
+        }
+    }
 }

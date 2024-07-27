@@ -1,3 +1,11 @@
+<?php 
+    require 'vendor/autoload.php';
+
+    use controller\UserController;
+    
+    $datas = new UserController();
+    $data = $datas->findUserByToken();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +17,11 @@
 
     <h1>Reset Password</h1>
 
-    <form method="post" action="process-reset-password.php">
+    <form method="post" action="updatepassword">
 
-        <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+        <input type="hidden" name="token" value="<?= $data['token'] ?>">
+        <input type="hidden" name="id" value="<?= $data['id'] ?>">
+        
 
         <label for="password">New password</label>
         <input type="password" id="password" name="password">
@@ -20,7 +30,7 @@
         <input type="password" id="password_confirmation"
                name="password_confirmation">
 
-        <button>Send</button>
+        <button type="submit">Send</button>
     </form>
 
 </body>

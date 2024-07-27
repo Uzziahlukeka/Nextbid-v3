@@ -23,7 +23,7 @@ $router->get('/google', function () {
     require 'config/google.php';
 });
 $router->get('/guest', function () {
-    require 'view/guest.html';
+    require 'view/message/guest.php';
 })->only('guest');
 $router->get('/redirect', function () {
     require 'view/message.html';
@@ -32,10 +32,13 @@ $router->get('/404', function () {
     require 'view/404.php';
 });
 $router->get('/about', function () {
-    require 'view/about.html';
+    require 'view/message/about.php';
 });
 $router->get('/contact', function () {
-    require 'view/contact.html';
+    require 'view/message/contact.php';
+});
+$router->get('/cart', function () {
+    require 'view/message/cart.php';
 });
 
 // User-related routes-----------------------------------------------------------------------
@@ -49,7 +52,7 @@ $router->get('/edit', function () {
     require 'view/user/edit.php';
 });
 $router->get('/forget', function () {
-    require 'controller/user/forget.php';
+    (new UserController())->forgetPassword();
 });
 $router->get('/login', function () {
     require 'view/user/login.php';
@@ -75,6 +78,13 @@ $router->get('/user/read', function () {
 $router->get('/newpassword', function () {
     require'view/user/forget.php';
 });
+$router->post('/updatepassword', function () {
+    (new UserController())->createPassword();
+});
+$router->post('/token', function () {
+    (new UserController())->findUserByToken();
+});
+
 $router->get('/logout', function () {
     (new UserController())->logoutUser();
 });
