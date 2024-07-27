@@ -49,7 +49,7 @@ $router->get('/edit', function () {
     require 'view/user/edit.php';
 });
 $router->get('/forget', function () {
-    require 'view/user/forget.php';
+    require 'controller/user/forget.php';
 });
 $router->get('/login', function () {
     require 'view/user/login.php';
@@ -71,6 +71,9 @@ $router->post('/login', function () {
 });
 $router->get('/user/read', function () {
     (new UserController())->readUser();
+});
+$router->get('/newpassword', function () {
+    require'view/user/forget.php';
 });
 $router->get('/logout', function () {
     (new UserController())->logoutUser();

@@ -89,9 +89,9 @@ $redirectUri = urlencode('http://localhost:3000/google');
             <h2>Reset Password</h2>
             <p>Enter your email address associated with your account. We'll send you a link to reset your password</p>
 
-            <form id="contact-form" method="post" class="contact-form" action="forget">
+            <form id="contact-form" method="get" class="contact-form" action="forget">
                 <label class="one-label" for="name">Full name*</label>
-                <input type="text" name="name" class="form-control" id="email" placeholder="jhon ling">
+                <input type="email" name="email" class="form-control" id="email" placeholder="jhonling@forget.com">
                 <button type="submit" class="btn" name="submit">Submit</button>
                 <!-- <a href="#" type="submit" class="btn">Create account</a> -->
                 <button id="back-to-login-btn" type="button" class="btn-1">Back to Login</button>
