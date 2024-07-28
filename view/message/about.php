@@ -32,7 +32,7 @@
             <li><a href="/main">Home</a></li>
             <li><a class="active"  href="about">About</a></li>
             <li><a href="contact">Contact</a></li>
-            <li><a href="/new item">Add Product</a></li>
+            <li><a href="/newItem">Add Product</a></li>
           </ul>
         </div>
         <div class="navbar-icons">

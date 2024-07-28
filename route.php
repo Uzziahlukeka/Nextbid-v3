@@ -29,7 +29,7 @@ $router->get('/redirect', function () {
     require 'view/message.html';
 });
 $router->get('/404', function () {
-    require 'view/404.php';
+    require 'view/message/404.php';
 });
 $router->get('/about', function () {
     require 'view/message/about.php';
@@ -139,7 +139,7 @@ $router->get('/showitem', function () {
 });
 
 $router->get('/delete_item', function () {
-    require 'view/item/delete_item.php';
+    require 'view/item/idelete.php';
 });
 
 $router->post('/deleteItem', function () {

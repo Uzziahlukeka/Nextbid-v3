@@ -152,12 +152,12 @@ class UserController
                     }
                 }
 
-                header("location:../../main");
+                header("location:/main");
                 exit();
             } else {
                 echo "Login failed. Please check your credentials.";
                 echo "<script> alert ('wrong data')</script>";
-                echo "<script>setTimeout(function(){ window.location.href = '../../homepage'; }, 100);</script>";
+                echo "<script>setTimeout(function(){ window.location.href = '/homepage'; }, 100);</script>";
             }
         }
     }
@@ -219,7 +219,10 @@ class UserController
             var_dump($response);
             exit;
         }
-        header('location: /');
+        echo "<script>
+                     alert('password reset');
+                    window.location.href = '/';
+                </script>";
         exit();
     }
 
@@ -282,7 +285,8 @@ class UserController
 
             echo "<script>
                      alert('email sent');
-                    window.location.href = '/';
+                     window.open('https://mail.google.com/mail/');
+                    window.location.href = 'https://mail.google.com/mail/';
                 </script>";
             exit;
         }

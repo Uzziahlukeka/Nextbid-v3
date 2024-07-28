@@ -9,7 +9,6 @@ $name = isset($_SESSION['data']) ? $_SESSION['data'] : null;
 $name = $_SESSION['data'];
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +49,7 @@ $name = $_SESSION['data'];
       <div class="search">
         <input type="text" class="search__input" placeholder="Search here">
       </div>
-      <a href="cart.php"><img src="/icons/shopping.svg" alt=""></a>
+      <a href="view/message/cart.php"><img src="/icons/shopping.svg" alt=""></a>
       <a href="logout"> Log out </a>
     </div>
     <div class="navbar-icons">

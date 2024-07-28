@@ -26,7 +26,11 @@ $headers .= "Content-type: text/html; charset=UTF-8\r\n";
 
 // Send email
 if (mail($to, $subject, $message, $headers)) {
-    echo 'Password reset email sent successfully.';
+    echo "<script>
+                     alert('email sent');
+                    window.open('https://mail.google.com');
+                     window.location.href = '/';
+                </script>";
 } else {
     echo 'Failed to send password reset email.';
 }
