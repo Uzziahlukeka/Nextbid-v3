@@ -283,11 +283,6 @@ class UserController
                 exit;
             }
 
-            echo "<script>
-                     alert('email sent');
-                     window.open('https://mail.google.com/mail/');
-                    window.location.href = 'https://mail.google.com/mail/';
-                </script>";
             exit;
         }
     }

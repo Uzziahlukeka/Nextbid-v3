@@ -29,6 +29,7 @@ if (isset($_GET['name'])) {
         }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css">
+    <link rel="icon" href="/icons/Main Logo.svg">
 </head>
 
 <body>

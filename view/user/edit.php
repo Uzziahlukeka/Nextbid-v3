@@ -15,6 +15,7 @@ $data = $datas->readUser();
     <meta charset="UTF-8">
     <title>Edit Client</title>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css">
+    <link rel="icon" href="/icons/Main Logo.svg">
 </head>
 
 <body>

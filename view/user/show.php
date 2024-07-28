@@ -14,6 +14,7 @@ $datas = $data->readUser();
     <meta charset="UTF-8">
     <title>User Details</title>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="icon" href="/icons/Main Logo.svg">
     <style>
         main {
             max-width: 600px;

@@ -20,7 +20,7 @@ $message = <<<EOD
 EOD;
 
 // Set content-type header for sending HTML email
-$headers = "From: no-reply@example.com\r\n";
+$headers = "From: no-reply\r\n";
 $headers .= "Reply-To: no-reply@example.com\r\n";
 $headers .= "Content-type: text/html; charset=UTF-8\r\n";
 
@@ -28,8 +28,7 @@ $headers .= "Content-type: text/html; charset=UTF-8\r\n";
 if (mail($to, $subject, $message, $headers)) {
     echo "<script>
                      alert('email sent');
-                    window.open('https://mail.google.com');
-                     window.location.href = '/';
+                     window.location.href = '('https://mail.google.com'';
                 </script>";
 } else {
     echo 'Failed to send password reset email.';

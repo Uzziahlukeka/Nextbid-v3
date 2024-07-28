@@ -9,6 +9,7 @@ if (isset($_GET['item_name'])) {
 <head>
     <meta charset="UTF-8">
     <title>upload file</title>
+    <link rel="icon" href="/icons/Main Logo.svg">
     <style>
         html,
         body {

@@ -12,6 +12,7 @@ if (isset($_GET['name'])) {
 <head>
     <meta charset="UTF-8">
     <title>Create user</title>
+    <link rel="icon" href="/icons/Main Logo.svg">
     <style>
         html,
         body {
