@@ -152,7 +152,7 @@ class UserController
                     }
                 }
 
-                header("location:/main");
+                header("location:../../main");
                 exit();
             } else {
                 echo "Login failed. Please check your credentials.";
@@ -204,6 +204,7 @@ class UserController
             'id' => filter_input(INPUT_POST, 'id')
         ];
 
+       
         $result = $this->sendRequest($this->apiBaseUrl . "newpassword", "POST", $data);
         $response = $result['response'];
         $status_code = $result['status_code'];
@@ -232,25 +233,24 @@ class UserController
         $apiUrl = $this->apiBaseUrl . "findbytoken?token=" . urlencode($token);
 
         $result = $this->sendRequest($apiUrl, "GET");
-        $response = $result['response'];
+
+        $data = $result['response'];
         $status_code = $result['status_code'];
-
-
 
         if ($status_code === 422) {
             echo "Invalid data: ";
-            print_r($response["errors"]);
+            print_r($data["errors"]);
             exit;
         }
 
         if ($status_code !== 200) {
             echo "Unexpected status code: $status_code";
-            var_dump($response);
+            var_dump($data);
             exit;
         }
 
         // Process the response data as needed
-        return $response;
+        return $data;
     }
 
     public function forgetPassword()
@@ -283,6 +283,11 @@ class UserController
                 exit;
             }
 
+            echo "<script>
+                     alert('email sent');
+                     window.open('https://mail.google.com/mail/');
+                    window.location.href = 'https://mail.google.com/mail/';
+                </script>";
             exit;
         }
     }
