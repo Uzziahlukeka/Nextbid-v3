@@ -40,6 +40,9 @@ $router->get('/contact', function () {
 $router->get('/cart', function () {
     require 'view/message/cart.php';
 });
+$router->get('/nouser', function () {
+    require 'view/message/nouser.php';
+});
 
 // User-related routes-----------------------------------------------------------------------
 $router->get('/create', function () {

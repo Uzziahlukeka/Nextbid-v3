@@ -15,13 +15,18 @@ $message = <<<EOD
 </head>
 <body>
     <p>Click <a href="$url">here</a> to reset your password.</p>
+
+     <br><br>
+            <p>Best regards,</p>
+            <p>uzh ind</p>
+            <p>Contact: <a href="mailto:uzziahlukeka04@gmail.com">contact@uzhind.com</a></p>
 </body>
 </html>
 EOD;
 
 // Set content-type header for sending HTML email
-$headers = "From: no-reply\r\n";
-$headers .= "Reply-To: no-reply@example.com\r\n";
+$headers = "from : no-reply\r\n";
+$headers .= "Reply-To: no-reply\r\n";
 $headers .= "Content-type: text/html; charset=UTF-8\r\n";
 
 // Send email

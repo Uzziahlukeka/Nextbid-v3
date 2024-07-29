@@ -1,12 +1,14 @@
 <?php
 require 'vendor/autoload.php';
 use controller\ItemController;
+
 $datas = new ItemController();
 $response = $datas->listItems();
 $data=$response['data'];
 
 $name = isset($_SESSION['data']) ? $_SESSION['data'] : null;
 $name = $_SESSION['data'];
+$id=$_SESSION['id'];
 
 ?>
 <!DOCTYPE html>
@@ -53,7 +55,7 @@ $name = $_SESSION['data'];
       <a href="logout"> Log out </a>
     </div>
     <div class="navbar-icons">
-      <a href="/show?name=<?php echo $name; ?>"><img class="user-profile-icon" src="/icons/user-circle.svg" alt=""></a>
+      <a href="/show?id=<?php echo $id; ?>"><img class="user-profile-icon" src="/icons/user-circle.svg" alt=""></a>
     </div>
     <div class="toggle-btn">
       <i class="fa-solid fa-bars fa-lg"></i>

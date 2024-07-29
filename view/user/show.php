@@ -99,7 +99,7 @@ $datas = $data->readUser();
             <dd><?php echo $datas['create_at'] ?></dd>
         </dl>
         <div class="button-container">
-            <a href="edit?name=<?php echo $datas['name']; ?>" class="card-text"><button class="edit-button">Edit</button></a>
+            <a href="edit?id=<?php echo $datas['id']; ?>" class="card-text"><button class="edit-button">Edit</button></a>
             <a href="/main" class="card-text"><button class="auction-button">Auction &gt;</button></a>
             <form method="post" action="/delete">
                 <input type="hidden" name="id" value="<?php echo $datas['id']; ?>">
