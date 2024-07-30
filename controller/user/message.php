@@ -25,7 +25,7 @@ $message = <<<EOD
 EOD;
 
 // Set content-type header for sending HTML email
-$headers = "from : no-reply\r\n";
+$headers = "from: no-reply\r\n";
 $headers .= "Reply-To: no-reply\r\n";
 $headers .= "Content-type: text/html; charset=UTF-8\r\n";
 

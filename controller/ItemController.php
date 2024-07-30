@@ -2,13 +2,21 @@
 
 namespace controller;
 
+if (isset($_POST['bidAmount'])) {
+    // Store the bid amount in the session
+    $_SESSION['lastBid'] = $_POST['bidAmount'];
+
+    var_dump($_SESSION['lastBid'] = $_POST['bidAmount']);
+    die();
+}
+
 class ItemController
 {
     private $apiBaseUrl = "http://localhost:8000";
 
     public function __construct()
     {
-        session_start();
+
     }
     public function deleteItem()
     {
@@ -205,15 +213,17 @@ class ItemController
         }
     }
 
-    private function handlePayment()
+    public function handlePayment()
     {
         if (isset($_POST['pay']) && isset($_POST['bidd'])) {
             $_SESSION['bid'] = $_POST['bidd'];
-            header('Location: ../../pay');
+            // var_dump($_SESSION);
+            // die();
+            header('Location: /payes');
             exit;
         } else {
             echo "<script>alert('Bid value not found in the form.');</script>";
-            echo "<a href='../../main' style='height: auto;'>Back</a>";
+            echo "<a href='/main' style='height: auto;'>Back</a>";
             exit;
         }
     }

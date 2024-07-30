@@ -150,19 +150,17 @@ $router->post('/deleteItem', function () {
 });
 
 $router->post('/pay', function () {
-    require 'view/item/pay.php';
+    (new ItemController())->handlePayment();
 });
 
 $router->post('/add_item', function () {
     require 'controller/item/upload.php'; // Assuming 'add item' is a typo and should be 'add_item'
 });
 
-$router->get('/pay', function () {
+$router->get('/payes', function () {
     require 'view/item/pay.php';
 });
 
-$router->post('/pay', function () {
-    require 'view/item/pay.php';
-});
+
 
 $router->route($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

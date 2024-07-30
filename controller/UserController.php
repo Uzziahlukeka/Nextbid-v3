@@ -110,11 +110,10 @@ class UserController
 
     }
         
-
     public function readUser()
     {
         $id = $_GET['id'];
-        $result = $this->sendRequest($this->apiBaseUrl . 'read?id=' .$id, 'GET');
+        $result = $this->sendRequest($this->apiBaseUrl . 'read?id=' .urlencode($id), 'GET');
         $response = $result['response'];
         $status_code = $result['status_code'];
 

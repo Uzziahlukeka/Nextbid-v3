@@ -1,6 +1,10 @@
 <?php
+require 'config/config.php';
+$client_id= CLIENT_ID;
 $bidValue = $_SESSION['bid'];
-$_SESSION['bid'] = $bidValue;
+var_dump($bidValue);
+
+
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +17,7 @@ $_SESSION['bid'] = $bidValue;
 
 <body>
   <!-- Replace "test" with your own sandbox Business account app client ID -->
-  <script src="https://www.paypal.com/sdk/js?client-id=your id&currency=PLN"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=<?=$client_id?>&currency=PLN"></script>
   <!-- Set up a container element for the button -->
   <div id="paypal-button-container"></div>
   <script>
