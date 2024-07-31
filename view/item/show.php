@@ -1,4 +1,7 @@
 <?php
+if (isset($_SESSION['bid'])) {
+    unset($_SESSION['bid']);
+}
 require 'vendor/autoload.php';
 use controller\ItemController;
 $datas = new ItemController();
@@ -63,11 +66,7 @@ $data=$response['data'];
                     <div class="current-price-p">
                         <div class="stroke"></div>
 
-                        <?php
-                        // Initialize the bid amount variable
-                        $bidAmount = isset($_SESSION['bid']) ? $_SESSION['bid'] : 0;
-                        ?>
-                        <p class="card-text card-text-2">Your bid:<span class="current-price current-bid">$ <?php echo $bidAmount; ?></span></p>
+                        <p class="card-text card-text-2">Your bid:<span class="current-price current-bid">$</span></p>
 
                         <p class="card-text">Last bid: <span class="current-price last-bid">$<?php echo $data['item_price'] ?></span></p>
                     </div>
@@ -80,7 +79,7 @@ $data=$response['data'];
                         </div>
 
                         <form method="post" action="pay">
-                            <input type=hidden value="<?= $bidAmount ?>" name='bidd'>
+                            <input type=hidden name='bid'>
                             <button type="submit" name='pay'>Pay</button>
                         </form>
                     </div>

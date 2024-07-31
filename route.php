@@ -130,7 +130,7 @@ $router->get('/show_item', function () {
 });
 
 $router->get('/show_iten', function () {
-    require 'view/item/show.php'; // Assuming 'show_iten' is a typo and should be 'show_item'
+    require 'view/item/show.php';
 });
 
 $router->get('/choice', function () {
@@ -154,11 +154,14 @@ $router->post('/pay', function () {
 });
 
 $router->post('/add_item', function () {
-    require 'controller/item/upload.php'; // Assuming 'add item' is a typo and should be 'add_item'
+    require 'controller/item/upload.php';
 });
 
 $router->get('/payes', function () {
     require 'view/item/pay.php';
+});
+$router->post('/updateBid', function () {
+    (new ItemController())->updateBid();
 });
 
 

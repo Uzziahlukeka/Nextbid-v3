@@ -87,10 +87,7 @@ class ItemController
 
 
         $_SESSION['item_name'] = $response['data']['item_name'];
-        if (isset($_POST['bid'])) {
-            $_SESSION['bid'] = $_POST['bid'];
-        }
-
+       
         if (!isset($_SESSION['data'])) {
             header("Location: /");
             exit;
@@ -108,9 +105,9 @@ class ItemController
     public function handleItemDetails()
     {
         // Unset the bid session variable if it exists
-        if (isset($_SESSION['bid'])) {
-            unset($_SESSION['bid']);
-        }
+         if (isset($_SESSION['bid'])) {
+             unset($_SESSION['bid']);
+         }
 
         // Get item name from the query parameter
         $name = $_GET['item_name'] ?? null;
@@ -144,13 +141,6 @@ class ItemController
             exit;
         }
 
-        // Handle bid submission
-        if (isset($_POST['bid'])) {
-            $bid = $_POST['bid'];
-            $_SESSION['bid'] = $bid;
-        }
-
-        // Set session variables
         $_SESSION['item_name'] = $data['item_name'];
 
         return ['status_code' => $status_code, 'data' => $data];
@@ -215,10 +205,11 @@ class ItemController
 
     public function handlePayment()
     {
-        if (isset($_POST['pay']) && isset($_POST['bidd'])) {
-            $_SESSION['bid'] = $_POST['bidd'];
-            // var_dump($_SESSION);
-            // die();
+        
+         if (isset($_POST['pay']) && isset($_POST['bid'])) {
+            $_SESSION['bids'] = $_POST['bid'];
+            var_dump($_SESSION);
+            die();
             header('Location: /payes');
             exit;
         } else {
@@ -269,5 +260,16 @@ class ItemController
             'status_code' => $status_code,
             'data' => json_decode($response, true)
         ];
+    }
+
+    public function updateBid(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bid'])) {
+            $bidAmount = floatval($_POST['bid']);
+            $_SESSION['bid'] = $bidAmount;
+            echo 'Bid updated successfully';
+        } else {
+            http_response_code(400); // Bad Request
+            echo 'Invalid request';
+        }
     }
 }

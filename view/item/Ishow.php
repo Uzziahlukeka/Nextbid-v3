@@ -1,9 +1,6 @@
 <?php
 require 'vendor/autoload.php';
-
 use controller\ItemController;
-
-
 $datas = new ItemController();
 $response = $datas->handleItemDetails();
 $data = $response['data'];
@@ -62,7 +59,7 @@ $data = $response['data'];
                     </div>
                     <div class="current-price-p">
                         <div class="stroke"></div>
-                        <p class="card-text card-text-2">Your bid:<span class="current-price current-bid">$<?php echo $_SESSION['bid'] ? $_SESSION['bid'] : '0'; ?></span></p>
+                        <p class="card-text card-text-2">Your bid:<span class="current-price current-bid">$<?php echo isset($_SESSION['bid']) ? $_SESSION['bid'] : '0'; ?></span></p>
                         <p class="card-text">Last bid: <span class="current-price last-bid">$<?php echo $data['item_price'] ?></span></p>
                     </div>
                     <p class="card-text-last card-text-1">Ends in: <span class="closing-time">2023-04-11T08:00:00Z</span></p>
@@ -74,7 +71,7 @@ $data = $response['data'];
                         </div>
 
                         <form method="post" action="/pay">
-                            <input type=hidden value="<?php echo isset($_SESSION['bidd']) ?>" name='bidd'>
+                            <input type=hidden value="<?php echo isset($_SESSION['bid']) ?>" name='bid'>
                             <button type="submit" name='pay'>Pay</button>
                         </form>
                     </div>
