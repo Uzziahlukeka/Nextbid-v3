@@ -84,9 +84,8 @@ class ItemController
             exit;
         }
 
-
-
         $_SESSION['item_name'] = $response['data']['item_name'];
+        $_SESSION['item_id'] = $response['data']['item_id'];
        
         if (!isset($_SESSION['data'])) {
             header("Location: /");
@@ -105,9 +104,9 @@ class ItemController
     public function handleItemDetails()
     {
         // Unset the bid session variable if it exists
-         if (isset($_SESSION['bid'])) {
-             unset($_SESSION['bid']);
-         }
+          if (isset($_SESSION['bid'])) {
+              unset($_SESSION['bid']);
+          }
 
         // Get item name from the query parameter
         $name = $_GET['item_name'] ?? null;
@@ -142,6 +141,7 @@ class ItemController
         }
 
         $_SESSION['item_name'] = $data['item_name'];
+        $_SESSION['item_id'] = $data['item_id'];
 
         return ['status_code' => $status_code, 'data' => $data];
     }
@@ -205,18 +205,61 @@ class ItemController
 
     public function handlePayment()
     {
-        
-         if (isset($_POST['pay']) && isset($_POST['bid'])) {
-            $_SESSION['bids'] = $_POST['bid'];
-            var_dump($_SESSION);
-            die();
-            header('Location: /payes');
+
+
+            $bidAmount=$_SESSION['bid'];
+            $item_id=$_SESSION['item_id'];
+            $user_id=$_SESSION['id'];
+            $bid_amount=$bidAmount;
+
+
+            $data = [
+                'item_id' => $item_id,
+                'user_id' => $user_id,
+                'bid_amount' => $bid_amount
+            ];
+                
+            $response = $this->sendApiRequest("/bid/item", "POST", $data);
+    
+            if ($response['status_code'] === 422) {
+                echo "Invalid data: ";
+                print_r($response['data']["errors"]);
+                exit;
+            } elseif ($response['status_code'] !== 200) {
+                echo "Unexpected status code: " . $response['status_code'];
+                var_dump($response['data']);
+                exit;
+            } else {
+                header('Location: /payes');
+                exit;
+            }
+    }
+    public function paymentData(){
+
+        $item_id=$_SESSION['item_id'];
+        $user_id=$_SESSION['id'];
+
+        $data=[
+            'item_id'=>$item_id,
+            'user_id'=>$user_id
+        ];
+
+        $query_string = http_build_query($data);
+
+        $response = $this->sendApiRequest("/paymentData/item?".$query_string,"GET");
+        $result=$response['data'];
+
+        if ($response['status_code'] === 422) {
+            echo "Invalid data: ";
+            print_r($response['data']["errors"]);
             exit;
-        } else {
-            echo "<script>alert('Bid value not found in the form.');</script>";
-            echo "<a href='/main' style='height: auto;'>Back</a>";
+        } elseif ($response['status_code'] !== 200) {
+            echo "Unexpected status code: " . $response['status_code'];
+            var_dump($response['data']);
             exit;
         }
+
+        return $result;
     }
 
     public function listItems()
@@ -263,6 +306,8 @@ class ItemController
     }
 
     public function updateBid(){
+        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bid'])) {
             $bidAmount = floatval($_POST['bid']);
             $_SESSION['bid'] = $bidAmount;
@@ -271,5 +316,6 @@ class ItemController
             http_response_code(400); // Bad Request
             echo 'Invalid request';
         }
+       
     }
 }

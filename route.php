@@ -101,6 +101,7 @@ $router->post('/user/update', function () {
 });
 
 // Additional routes for items---------------------------------------------------------------------------
+
 $router->get('/newItem', function () {
     require 'view/item/add_product.php';
 });

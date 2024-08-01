@@ -2,10 +2,6 @@
 require 'config/config.php';
 $client_id= CLIENT_ID;
 $bidValue = $_SESSION['bid'];
-var_dump($bidValue);
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
