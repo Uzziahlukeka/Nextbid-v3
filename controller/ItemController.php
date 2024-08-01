@@ -205,8 +205,6 @@ class ItemController
 
     public function handlePayment()
     {
-
-
             $bidAmount=$_SESSION['bid'];
             $item_id=$_SESSION['item_id'];
             $user_id=$_SESSION['id'];

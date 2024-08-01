@@ -68,7 +68,7 @@ $payment=$datas->paymentData();
                         <div class="stroke"></div>
 
                         <p class="card-text card-text-2">Your bid:<span class="current-price current-bid">$</span></p>
-                        <p class="card-text">Last bid: <span class="current-price last-bid">$<?php echo $payment['bid_amount'] ?></span></p>
+                        <p class="card-text">Last bid: <span class="current-price last-bid">$<?php echo $payment['bid_amount']?? $data['item_price']; ?></span></p>
                         <p class="card-text">starting price: <span class="current-price last-bid">$<?php echo $data['item_price'] ?></span></p>
                     </div>
                     <p class="card-text-last card-text-1">Ends in: <span class="closing-time">2023-04-11T08:00:00Z</span></p>
