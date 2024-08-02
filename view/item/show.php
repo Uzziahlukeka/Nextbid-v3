@@ -1,13 +1,16 @@
 <?php
-if (isset($_SESSION['bid'])) {
-    unset($_SESSION['bid']);
-}
+ if (isset($_SESSION['bid'])) {
+     unset($_SESSION['bid']);
+ }
 require 'vendor/autoload.php';
 use controller\ItemController;
+
 $datas = new ItemController();
 $response = $datas->handleItemDetails();
-$data=$response['data'];
 $payment=$datas->paymentData();
+$read=$datas->paymentDataRead();
+$data = $response['data'];
+
 
 ?>
 <!DOCTYPE html>
@@ -68,8 +71,8 @@ $payment=$datas->paymentData();
                         <div class="stroke"></div>
 
                         <p class="card-text card-text-2">Your bid:<span class="current-price current-bid">$</span></p>
-                        <p class="card-text">Last bid: <span class="current-price last-bid">$<?php echo $payment['bid_amount']?? $data['item_price']; ?></span></p>
-                        <p class="card-text">starting price: <span class="current-price last-bid">$<?php echo $data['item_price'] ?></span></p>
+                        <p class="card-text"> Your last bid: <span class="current-price last-bid">$<?php echo $payment['your_bid']?? $data['item_price']; ?></span></p>
+                        <p class="card-text">The Bid: <span class="current-price last-bid">$<?php echo $read['bid_amount']?? $data['item_price'] ?></span></p>
                     </div>
                     <p class="card-text-last card-text-1">Ends in: <span class="closing-time">2023-04-11T08:00:00Z</span></p>
 
@@ -80,7 +83,6 @@ $payment=$datas->paymentData();
                         </div>
 
                         <form method="post" action="pay">
-                            <input type=hidden name='bid'>
                             <button type="submit" name='pay'>Pay</button>
                         </form>
                     </div>

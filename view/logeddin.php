@@ -5,6 +5,10 @@ use controller\ItemController;
 $datas = new ItemController();
 $response = $datas->listItems();
 $data=$response['data'];
+$payment=$datas->paymentDataRead();
+
+var_dump($payment);
+
 
 $name = isset($_SESSION['data']) ? $_SESSION['data'] : null;
 $name = $_SESSION['data'];
@@ -213,12 +217,13 @@ $id=$_SESSION['id'];
               <div class="current-price-p">
                 <div class="stroke"></div>
                 <p class="card-text card-text-2">Your bid: <span class="current-price current-bid">$0</span></p>
-                <p class="card-text">Last bid: <span class="current-price last-bid">$<?php echo $row['item_price'] ?></span></p>
+                <p class="card-text">Last bid: <span class="current-price last-bid">$<?php echo $payment['bid_amount']??$row['item_price'] ?></span></p>
+                <p class="card-text">starting price: <span class="current-price last-bid">$<?php echo $row['item_price'] ?></span></p>
               </div>
               <p class="card-text-last card-text-1">Ends in: <span class="closing-time">2023-04-11T08:00:00Z</span></p>
               <div class="card-bid">
                 <input type="number" class="bid-input" placeholder="Offer a price">
-                <button onclick="bid(this.closest('.auction-card'))">Bid now</button>
+                <button onclick="bid(this.closest('.auction-card'))">Bid now</button></>
               </div>
               <p class="card-text-last card-text">Ends in:<span id="timer" class="countdown-timer"></span></p>
             </div>

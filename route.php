@@ -119,7 +119,7 @@ $router->get('/edit_item', function () {
 });
 
 $router->get('/updateitem', function () {
-    require 'view/item/update_item.php';
+    require 'view/item/iupdate.php';
 });
 
 $router->post('/edititem', function () {

@@ -227,7 +227,7 @@ class ItemController
                 echo "Unexpected status code: " . $response['status_code'];
                 var_dump($response['data']);
                 exit;
-            } else {
+            } elseif($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
                 header('Location: /payes');
                 exit;
             }
@@ -245,6 +245,34 @@ class ItemController
         $query_string = http_build_query($data);
 
         $response = $this->sendApiRequest("/paymentData/item?".$query_string,"GET");
+        $result=$response['data'];
+
+        if ($response['status_code'] === 422) {
+            echo "Invalid data: ";
+            print_r($response['data']["errors"]);
+            exit;
+        } elseif ($response['status_code'] !== 200) {
+            echo "Unexpected status code: " . $response['status_code'];
+            var_dump($response['data']);
+            exit;
+        }
+
+        return $result;
+    }
+
+    public function paymentDataRead(){
+
+        $item_id=$_SESSION['item_id'];
+        $user_id=$_SESSION['id'];
+
+        $data=[
+            'item_id'=>$item_id,
+            'user_id'=>$user_id
+        ];
+
+        $query_string = http_build_query($data);
+
+        $response = $this->sendApiRequest("/bid/read?".$query_string,"GET");
         $result=$response['data'];
 
         if ($response['status_code'] === 422) {
@@ -309,6 +337,7 @@ class ItemController
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bid'])) {
             $bidAmount = floatval($_POST['bid']);
             $_SESSION['bid'] = $bidAmount;
+            $this->handlePayment();
             echo 'Bid updated successfully';
         } else {
             http_response_code(400); // Bad Request
