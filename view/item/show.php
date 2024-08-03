@@ -1,7 +1,4 @@
 <?php
- if (isset($_SESSION['bid'])) {
-     unset($_SESSION['bid']);
- }
 require 'vendor/autoload.php';
 use controller\ItemController;
 
