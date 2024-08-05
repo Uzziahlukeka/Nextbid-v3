@@ -7,15 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/icons/Main Logo.svg">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/styles/main.css">
     <title>Nextbid - About Us</title>
 </head>
@@ -25,33 +21,33 @@
     <!-- ....................................Here starts navbar........................................ -->
 
 
-    <section id="header"> 
+    <section id="header">
         <a href="/main"><img class="image" src="/icons/Nextbid.svg" alt=""></a>
         <div class="navbar-links">
-          <ul class="navbar">
-            <li><a href="/main">Home</a></li>
-            <li><a class="active"  href="about">About</a></li>
-            <li><a href="contact">Contact</a></li>
-            <li><a href="/newItem">Add Product</a></li>
-          </ul>
+            <ul class="navbar">
+                <li><a href="/main">Home</a></li>
+                <li><a class="active" href="about">About</a></li>
+                <li><a href="contact">Contact</a></li>
+                <li><a href="/newItem">Add Product</a></li>
+            </ul>
         </div>
         <div class="navbar-icons">
-          <div class="search">
-            <input type="text" class="search__input" placeholder="Search here">
-          </div>
-          <a href="cart.php"><img src="/icons/shopping.svg" alt=""></a>
-          <a href="log out"> Log out </a>
+            <div class="search">
+                <input type="text" class="search__input" placeholder="Search here">
+            </div>
+            <a href="cart.php"><img src="/icons/shopping.svg" alt=""></a>
+            <a href="log out"> Log out </a>
         </div>
         <div class="toggle-btn">
-          <i class="fa-solid fa-bars fa-lg"></i>
+            <i class="fa-solid fa-bars fa-lg"></i>
         </div>
         <div class="dropdown-menu">
-          <li><a href="/main">Home</a></li>
-          <li><a class="active" href="about">About</a></li>
-          <li><a href="contact">Contact</a></li>
-          <li><a href="new item">Add Product</a></li>
+            <li><a href="/main">Home</a></li>
+            <li><a class="active" href="about">About</a></li>
+            <li><a href="contact">Contact</a></li>
+            <li><a href="new item">Add Product</a></li>
         </div>
-      </section> 
+    </section>
 
 
     <!-- ....................................Here starts about section........................................ -->
@@ -97,41 +93,8 @@
                 </div>
 
             </div>
-
-                <div class="about-info">
-                    <div class="person-image">
-                        <img src="/images/users/samuel-raita-RiDxDgHg7pw-unsplash.png" alt="">
-                    </div>
-                    <div class="person-info">
-                        <h4>RORY ASHFORD-BENTLEY</h4>
-                        <h6>LEAD DEVELOPER</h6>
-                        <P>Rory started his career as a graphic designer but found his passion was
-                            ultimately in writing code. For the last 10+ years Rory has found his forte
-                            creating websites, extranets and apps for international clients with a
-                            heavy focus on public sector and private healthcare clients.
-                        </P>
-                    </div>
-                </div>
-
-
-
-                <div class="about-info">
-                    <div class="person-image">
-                        <img src="/images/users/windows-c-lUYtNjqxw-unsplash.png" alt="">
-                    </div>
-                    <div class="person-info">
-                        <h4>ALEX SIMMONDS</h4>
-                        <h6>ACCOUNT MANAGER</h6>
-                        <P>Alex joined Mixd as a Project Manager after
-                            spending ten years working in retail management.
-                            She is a perpetual perfectionist and prides herself on
-                            her great communication skills that ensure clients are always
-                            bang up-to-date with progress on their projects.
-                    </div>
-                </div>
-            </div> -->
         </div>
-        </div>  
+        </div>
     </section>
 
 
@@ -145,7 +108,7 @@
                     <h4>company</h4>
                     <ul class="footer-ul">
                         <li><a href="#">about us</a></li>
-                        <li><a href="#">new items</a></li>
+                        <li><a href="newItem">new items</a></li>
                         <li><a href="#">privacy policy</a></li>
                         <li><a href="#">affiliate program</a></li>
                     </ul>
@@ -157,15 +120,6 @@
                         <li><a href="#">shipping</a></li>
                         <li><a href="#">returns</a></li>
                         <li><a href="#">order status</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>online shop</h4>
-                    <ul class="footer-ul">
-                        <li><a href="#">watch</a></li>
-                        <li><a href="#">bag</a></li>
-                        <li><a href="#">shoes</a></li>
-                        <li><a href="#">dress</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
