@@ -1,14 +1,5 @@
 <?php
-require 'vendor/autoload.php';
-use controller\ItemController;
-
-$datas = new ItemController();
-$response = $datas->handleItemDetails();
-$payment=$datas->paymentData();
-$read=$datas->paymentDataRead();
-$data = $response['data'];
-
-
+require 'view/item/layerShow.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,9 +58,9 @@ $data = $response['data'];
                     <div class="current-price-p">
                         <div class="stroke"></div>
 
-                        <p class="card-text card-text-2">Your bid:<span class="current-price current-bid">$</span></p>
-                        <p class="card-text"> Your last bid: <span class="current-price last-bid">$<?php echo $payment['your_bid']?? $data['item_price']; ?></span></p>
-                        <p class="card-text">The Bid: <span class="current-price last-bid">$<?php echo $read['bid_amount']?? $data['item_price'] ?></span></p>
+                        <p class="card-text card-text-2">Your Bid:<span class="current-price current-bid">$</span></p>
+                        <p class="card-text"> Your Last Bid: <span class="current-price">$<?php echo $yourBid ?></span></p>
+                        <p class="card-text">The Bid: <span class="current-price last-bid">$<?php echo $currentBid ?></span></p>
                     </div>
                     <p class="card-text-last card-text-1">Ends in: <span class="closing-time">2023-04-11T08:00:00Z</span></p>
 
@@ -79,9 +70,14 @@ $data = $response['data'];
                             <button onclick="bid(this.closest('.auction-card'))">Bid now</button>
                         </div>
 
-                        <form method="post" action="pay">
-                            <button type="submit" name='pay'>Pay</button>
-                        </form>
+                        <?php if ($canPay ) : ?>
+                            <form method="post" action="/pay">
+                                <input type="hidden" value="<?php echo $payment['your_bid']?? 0; ?>" name="bet">
+                                <button type="submit" id="submitButton" name="pay">Pay</button>
+                            </form>
+                        <?php else : ?>
+                            <button id="alertButton" disabled style="background-color: gray;">Pay</button>
+                        <?php endif; ?>
                     </div>
 
                     <p class="card-text-last card-text">Ends in:<span id="timer" class="countdown-timer"></span></p>

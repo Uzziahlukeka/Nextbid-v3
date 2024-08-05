@@ -36,3 +36,17 @@ function bid(cardElement) {
   // Clear the input field
   bidInputElement.value = '';
 }
+document.addEventListener('DOMContentLoaded', function() {
+  const alertButton = document.getElementById('alertButton');
+  if (alertButton) {
+      // Enable the button and change color after 5 seconds
+      setTimeout(function() {
+          alertButton.disabled = false;
+          alertButton.style.backgroundColor = 'red';
+      }, 5000);
+
+      alertButton.addEventListener('click', function() {
+          alert("You cannot pay because your bid is not higher than the current bid.");
+      });
+  }
+});

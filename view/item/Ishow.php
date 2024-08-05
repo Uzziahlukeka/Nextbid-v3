@@ -1,14 +1,5 @@
 <?php
-require 'vendor/autoload.php';
-
-use controller\ItemController;
-
-$datas = new ItemController();
-$response = $datas->handleItemDetails();
-$payment = $datas->paymentData();
-$read=$datas->paymentDataRead();
-$data = $response['data'];
-
+require 'view/item/layerShow.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +21,6 @@ $data = $response['data'];
 </head>
 
 <body>
-
 
     <section class="card-content">
         <div class="wrapper cards">
@@ -64,9 +54,9 @@ $data = $response['data'];
                     </div>
                     <div class="current-price-p">
                         <div class="stroke"></div>
-                        <p class="card-text card-text-2">Your bid:<span class="current-price current-bid">$<?php echo isset($_SESSION['bid']) ? $_SESSION['bid'] : '0'; ?></span></p>
-                        <p class="card-text">Your Last bid: <span class="current-price last-bid">$<?php echo $paymenet['your_bid']?? $data['item_price'] ?></span></p>
-                        <p class="card-text">The Bid: <span class="current-price last-bid">$<?php echo $read['bid_amount'] ?? $data['item_price'] ?></span></p>
+                        <p class="card-text card-text-2">Your Bid:<span class="current-price current-bid">$<?php echo isset($_SESSION['bid']) ? $_SESSION['bid'] : '0'; ?></span></p>
+                        <p class="card-text">Your Last bid: <span class="current-price ">$<?php echo $yourBid ?></span></p>
+                        <p class="card-text">The Bid: <span class="current-price last-bid">$<?php echo $currentBid ?></span></p>
                     </div>
                     <p class="card-text-last card-text-1">Ends in: <span class="closing-time">2023-04-11T08:00:00Z</span></p>
 
@@ -75,29 +65,32 @@ $data = $response['data'];
                             <input type="number" class="bid-input" placeholder="Offer a price" name="bid">
                             <button onclick="bid(this.closest('.auction-card'))">Bid now</button>
                         </div>
+                        <?php if ($canPay) : ?>
                             <form method="post" action="/pay">
-                                <input type="hidden" value="<?php echo $payment['bid_amount'] ?>" name="bet">
-                                <button type="submit" id="myButton" name="pay">Pay</button>
+                                <input type="hidden" value="<?php echo $payment['your_bid'] ?>" name="bet">
+                                <button type="submit" id="submitButton" name="pay">Pay</button>
                             </form>
+                        <?php else : ?>
+                            <button id="alertButton" disabled style="background-color: gray;">Pay</button>
+                        <?php endif; ?>
                     </div>
-                
 
-                <p class="card-text-last card-text">Ends in:<span id="timer" class="countdown-timer"></span></p>
-                <form method="post" action="deleteItem">
-                    <input type="hidden" name="item_name" value="<?= $data["item_name"] ?>">
-                    <button class="delete-button">Delete</button>
-                </form>
+                    <p class="card-text-last card-text">Ends in:<span id="timer" class="countdown-timer"></span></p>
+                    <form method="post" action="deleteItem">
+                        <input type="hidden" name="item_name" value="<?= $data["item_name"] ?>">
+                        <button class="delete-button">Delete</button>
+                    </form>
 
-                <form method="get" action="updateitem" class="edit-button">
-                    <!-- <input type="hidden" name="_method" value="PUT"> -->
-                    <input type="hidden" name="item_name" value="<?php echo $data["item_name"]; ?>">
-                    <input type="hidden" name="user_id" value="<?php echo $data["user_id"]; ?>">
-                    <button class="edit-button">edit</button>
-                </form>
+                    <form method="get" action="updateitem" class="edit-button">
+                        <!-- <input type="hidden" name="_method" value="PUT"> -->
+                        <input type="hidden" name="item_name" value="<?php echo $data["item_name"]; ?>">
+                        <input type="hidden" name="user_id" value="<?php echo $data["user_id"]; ?>">
+                        <button class="edit-button">edit</button>
+                    </form>
 
-                <form method="get" action="/">
-                    <button type="submit" class="auction-button">AUCTION</button>
-                </form>
+                    <form method="get" action="/">
+                        <button type="submit" class="auction-button">AUCTION</button>
+                    </form>
 
                 </div>
 
@@ -106,37 +99,15 @@ $data = $response['data'];
 
     </section>
     <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date().getTime() + 10 * 1000; // 10 seconds from now
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer le bouton
+            const submitButton = document.getElementById('submitButton');
 
-        // Update the count down every 1 second
-        var x = setInterval(function() {
-            // Get current date and time
-            var now = new Date().getTime();
-
-            // Calculate the remaining time
-            var distance = countDownDate - now;
-
-            // Time calculations for hours, minutes, and seconds
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Format time as two digits
-            hours = hours < 10 ? '0' + hours : hours;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-
-            // Display the countdown
-            document.getElementById('countdown').innerHTML = hours + ":" + minutes + ":" + seconds;
-
-            // If the countdown is finished, show the button
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById('countdown').innerHTML = "EXPIRED";
-                document.getElementById('myButton').style.display = 'block';
-            }
-        }, 1000);
+            // Attendre 5 secondes avant d'activer le bouton
+            setTimeout(function() {
+                submitButton.disabled = false;
+            }, 5000);
+        });
     </script>
     <script src="/js/script.js"></script>
     <script src="/js/bid.js"></script>

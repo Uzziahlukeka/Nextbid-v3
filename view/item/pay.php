@@ -1,7 +1,7 @@
 <?php
 require 'config/config.php';
 $client_id= CLIENT_ID;
-$bidValue = $_SESSION['bid'];
+$bidValue = $_SESSION['your_bid'];
 ?>
 <!DOCTYPE html>
 <html>
