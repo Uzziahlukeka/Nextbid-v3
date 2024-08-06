@@ -1,4 +1,5 @@
-# MVC-and-Rest-try
+<<<<<<< HEAD
+# NextBid
 
 after building a rest and a mvc i decided to combine those two here down find the description 
 these are exercises and way of understanding concept 
@@ -121,3 +122,7 @@ PHP, JS, Database, REST API, MVC, Payment Integration (paypal)
 
 
 # THE_U
+=======
+# Nextbid-v3
+This is about an auction website where users can add , bid and pay via paypal 
+>>>>>>> origin/main
