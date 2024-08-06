@@ -1,59 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="icon" href="/icons/Main Logo.svg">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/styles/main.css">
-    <title>Nextbid - Contact</title>
-</head>
+<?php
+$pageTitle = 'NextBid-Contact';
+require 'view/layer/mainHead.php';
+?>
 
 <body>
 
     <!-- ....................................Here starts navbar........................................ -->
 
-    <section id="header"> 
-        <a href="/main"><img class="image" src="/icons/Nextbid.svg" alt=""></a>
-        <div class="navbar-links">
-          <ul class="navbar">
-            <li><a href="/main">Home</a></li>
-            <li><a href="about">About</a></li>
-            <li><a  class="active"  href="contact">Contact</a></li>
-            <li><a href="/newItem">Add Product</a></li>
-          </ul>
-        </div>
-        <div class="navbar-icons">
-          <div class="search">
-            <input type="text" class="search__input" placeholder="Search here">
-          </div>
-          <a href="cart.php"><img src="/icons/shopping.svg" alt=""></a>
-          <a href="log out"> Log out </a>
-        </div>
-        <div class="toggle-btn">
-          <i class="fa-solid fa-bars fa-lg"></i>
-        </div>
-        <div class="dropdown-menu">
-          <li><a href="/main">Home</a></li>
-          <li><a href="about">About</a></li>
-          <li><a class="active" href="contact">Contact</a></li>
-          <li><a href="new item">Add Product</a></li>
-        </div>
-      </section> 
-
-
-
+    <?php
+    $currentFile = basename($_SERVER['REQUEST_URI'], ".php"); 
+    $currentPage = ($currentFile == "") ? "main" : $currentFile; 
+    require 'view/layer/navbarSection.php';
+    ?>
 
     <!-- ....................................Here starts contact section........................................ -->
 
@@ -66,8 +24,7 @@
                 <div class="form-name-email">
                     <div class="form-group">
                         <label class="one-label" for="email">Your Email*</label>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="example@email.com"
-                            required>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="example@email.com" required>
                     </div>
                     <div class="form-group">
                         <label class="one-label" for="name">Phone Number*</label>
@@ -78,8 +35,7 @@
                 <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject">
 
                 <label class="one-label" for="button">Message*</label>
-                <textarea name="message" class="form-control" id="message" rows="5"
-                    placeholder="Your message here.."></textarea>
+                <textarea name="message" class="form-control" id="message" rows="5" placeholder="Your message here.."></textarea>
                 <input type="submit" class="btn" value="Send Request">
             </form>
         </div>
@@ -88,50 +44,9 @@
 
     <!-- ....................................Here starts footer........................................ -->
 
-
-    <footer class="footer">
-        <div class="container-1">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>company</h4>
-                    <ul class="footer-ul">
-                        <li><a href="about">about us</a></li>
-                        <li><a href="newItem">new items</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">affiliate program</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>get help</h4>
-                    <ul class="footer-ul">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">shipping</a></li>
-                        <li><a href="#">returns</a></li>
-                        <li><a href="#">order status</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>follow us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <div class="last-div">
-        <p>&copy; 2023 NextBid - Auction. All rights reserved.</p>
-    </div>
-
-    <!--*************************************Here starts top-to button***************************************-->
-
-    <button onclick="topFunction()" id="myBtn" title="Go to top">
-        <img src="/icons/to-top-button.svg" alt="Back to Top">
-    </button>
-
+    <?php
+    require 'view/layer/mainFooter.php';
+    ?>
     <!--*************************************Here starts js links***************************************-->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -145,4 +60,5 @@
     <script src="/js/contact.js"></script>
 
 </body>
+
 </html>

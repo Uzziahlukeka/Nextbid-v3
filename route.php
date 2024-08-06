@@ -110,6 +110,10 @@ $router->get('/upload', function () {
     require 'view/item/upload.php';
 });
 
+$router->get('/cart', function () {
+    require 'view/message/cart.php';
+});
+
 $router->post('/newitem', function () {
     (new ItemController())->uploadItem();
 });

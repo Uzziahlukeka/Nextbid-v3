@@ -16,5 +16,3 @@ $currentBid = isset($read['bid_amount']) ? $read['bid_amount'] : (isset($data['i
 
 $canPay = $yourBid >= $currentBid;
 
-
-?>

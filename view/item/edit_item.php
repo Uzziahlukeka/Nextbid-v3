@@ -3,8 +3,6 @@
 if (isset($_GET['item_name'])) {
     $data = urldecode($_GET['item_name']);
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>

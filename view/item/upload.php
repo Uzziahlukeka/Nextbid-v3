@@ -20,7 +20,6 @@ if (isset($_GET['item_name'])) {
             justify-content: center;
             font-family: sans-serif;
         }
-
         main {
             max-width: 600px;
             margin: 0 auto;

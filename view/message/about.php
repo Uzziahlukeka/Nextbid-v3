@@ -1,56 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="/icons/Main Logo.svg">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/styles/main.css">
-    <title>Nextbid - About Us</title>
-</head>
+<?php
+$pageTitle = 'NextBid-About Us';
+require 'view/layer/mainHead.php';
+?>
 
 <body>
 
     <!-- ....................................Here starts navbar........................................ -->
+    <?php
+    $currentFile = basename($_SERVER['REQUEST_URI'], ".php"); 
+    $currentPage = ($currentFile == "") ? "main" : $currentFile; 
+    require 'view/layer/navbarSection.php';
+    ?>
+    <!-- ....................................Here starts about section........................................ -->
 
-
-    <section id="header">
-        <a href="/main"><img class="image" src="/icons/Nextbid.svg" alt=""></a>
-        <div class="navbar-links">
-            <ul class="navbar">
-                <li><a href="/main">Home</a></li>
-                <li><a class="active" href="about">About</a></li>
-                <li><a href="contact">Contact</a></li>
-                <li><a href="/newItem">Add Product</a></li>
-            </ul>
-        </div>
-        <div class="navbar-icons">
-            <div class="search">
-                <input type="text" class="search__input" placeholder="Search here">
-            </div>
-            <a href="cart.php"><img src="/icons/shopping.svg" alt=""></a>
-            <a href="log out"> Log out </a>
-        </div>
-        <div class="toggle-btn">
-            <i class="fa-solid fa-bars fa-lg"></i>
-        </div>
-        <div class="dropdown-menu">
-            <li><a href="/main">Home</a></li>
-            <li><a class="active" href="about">About</a></li>
-            <li><a href="contact">Contact</a></li>
-            <li><a href="new item">Add Product</a></li>
-        </div>
+    <section id="our-story" class="about">
+        <h2>OUR STORY</h2>
+        <p class="about-info">NextBid was born from a shared vision between Uzziah Lukeka and Akbarali Nabiev. In 2022, while working 
+           on a freelance project together, they realized the potential for a new kind of auction platform—one 
+           that could leverage modern technology to create a more accessible, efficient, and transparent auction experience. 
+           Combining Uzziah's expertise in backend development and Akbarali's flair for creative design, they set out to build 
+           NextBid from the ground up.</p>
+        <p class="about-info">Starting from a small garage in Uzziah's hometown, the duo faced numerous challenges, from securing funding 
+           to developing a robust platform that could handle high traffic and transactions securely. Their determination 
+           and complementary skills, however, saw them through these early hurdles. They launched the first version of NextBid 
+           in late 2022, quickly gaining traction due to its user-friendly interface and innovative features.</p>
+        <p class="about-info">Today, NextBid stands as a testament to their hard work and vision, connecting buyers and sellers from all 
+           over the world and revolutionizing the way auctions are conducted. With a growing team and an ever-expanding 
+           user base, Uzziah and Akbarali continue to drive NextBid forward, always looking for new ways to innovate and 
+           improve the auction experience for everyone involved.</p>
     </section>
 
-
-    <!-- ....................................Here starts about section........................................ -->
+    <section id="new-section" class="about">
+        <h2>OUR MISSION</h2>
+        <h5 class="about-info">At NextBid, our mission is to revolutionize the auction industry by providing a seamless, 
+           innovative, and user-friendly platform that connects buyers and sellers globally. 
+           We strive to create a transparent and efficient auction experience, leveraging technology 
+           to enhance accessibility and trust in the auction process.</h5>
+    </section>
 
     <section id="about" class="about">
         <h2>MEET OUR TEAM</h2>
@@ -96,54 +82,10 @@
         </div>
         </div>
     </section>
-
-
     <!-- ....................................Here starts footer........................................ -->
-
-
-    <footer class="footer">
-        <div class="container-1">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>company</h4>
-                    <ul class="footer-ul">
-                        <li><a href="#">about us</a></li>
-                        <li><a href="newItem">new items</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">affiliate program</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>get help</h4>
-                    <ul class="footer-ul">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">shipping</a></li>
-                        <li><a href="#">returns</a></li>
-                        <li><a href="#">order status</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>follow us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <div class="last-div">
-        <p>&copy; 2023 NextBid - Auction. All rights reserved.</p>
-    </div>
-
-    <!--*************************************Here starts top-to button***************************************-->
-
-    <button onclick="topFunction()" id="myBtn" title="Go to top">
-        <img src="/icons/to-top-button.svg" alt="Back to Top">
-    </button>
-
+    <?php
+    require 'view/layer/mainFooter.php';
+    ?>
     <!--*************************************Here starts js links***************************************-->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
