@@ -1,0 +1,11 @@
+services:
+  web:
+    image: php:8.2-apache 
+    container_name: nextbid-web
+    build: 
+      context: ./tools
+      dockerfile: dockerfile
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8080:80 
