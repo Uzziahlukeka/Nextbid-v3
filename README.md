@@ -53,6 +53,7 @@ To ensure the API functions correctly:
 
 **Skills and Knowledge Gained**:
 - REST API Design and Implementation
+- Google Api integrations
 - MVC Architecture
 - Distributed System Design
 - User and Auction Management
